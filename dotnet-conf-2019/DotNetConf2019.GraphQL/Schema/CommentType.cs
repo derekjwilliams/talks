@@ -3,9 +3,9 @@ using HotChocolate.Types;
 
 namespace DotNetConf2019.GraphQL.Schema
 {
-    public class CommentType : ObjectType<Comment>
+    public class CommentType : ObjectType<Comments>
     {
-        protected override void Configure(IObjectTypeDescriptor<Comment> descriptor)
+        protected override void Configure(IObjectTypeDescriptor<Comments> descriptor)
         {
             base.Configure(descriptor);
 

@@ -1,24 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using HotChocolate.Types;
+using HotChocolate.Types.Relay;
+using System;
 
-namespace BlogServer.Models
+namespace DotNetConf2019.GraphQL.Data
 {
-    public partial class Posts
+    public class Posts
     {
-        public Posts()
-        {
-            Comments = new HashSet<Comments>();
-            Images = new HashSet<Images>();
-        }
+        //public Posts()
+        //{
+        //    //Comments = new HashSet<Comments>();
+        //    //Images = new HashSet<Images>();
+        //}
 
-        public int Id { get; set; }
-        public int AuthorId { get; set; }
-        public string Title { get; set; }
-        public string Markdown { get; set; }
-        public byte[] PublishedOn { get; set; }
+        public int Id { get; set; } = 0;
 
-        public virtual Authors Author { get; set; }
-        public virtual ICollection<Comments> Comments { get; set; }
-        public virtual ICollection<Images> Images { get; set; }
+        public int AuthorId { get; set; } = 0;
+
+        public string Title { get; set; } = "";
+
+        public string Markdown { get; set; } = "";
+
+        public DateTime PublishedOn { get; set; }
+
+        //public virtual Authors Author { get; set; } 
+        //public virtual ICollection<Comments> Comments { get; set; }
+        //public virtual ICollection<Images> Images { get; set; }
     }
 }

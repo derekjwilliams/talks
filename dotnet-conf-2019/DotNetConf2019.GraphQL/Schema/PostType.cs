@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace DotNetConf2019.GraphQL.Schema
 {
-    public class PostType : ObjectType<Post>
+    public class PostType : ObjectType<Posts>
     {
-        protected override void Configure(IObjectTypeDescriptor<Post> descriptor)
+        protected override void Configure(IObjectTypeDescriptor<Posts> descriptor)
         {
             base.Configure(descriptor);
 
@@ -27,7 +27,7 @@ namespace DotNetConf2019.GraphQL.Schema
 
             descriptor.Field("html")
                 .Type<StringType>()
-                .Resolver(ctx => Markdown.ToHtml(ctx.Parent<Post>().Markdown ?? ""));
+                .Resolver(ctx => Markdown.ToHtml(ctx.Parent<Posts>().Markdown ?? ""));
 
             descriptor.Field<PostType>(p => ResolveAuthor(default, default, default))
                 .Name("author")
@@ -43,14 +43,14 @@ namespace DotNetConf2019.GraphQL.Schema
                 .Type<ImageType>();
         }
 
-        public async Task<Image> ResolveImage([Parent] Post post, [Service] BlogDbContext dbContext, ImageSize size)
+        public async Task<Images> ResolveImage([Parent] Posts post, [Service] BlogDbContext dbContext, ImageSize size)
         {
             return await dbContext.Images.FirstOrDefaultAsync(i => i.Size == size && i.PostId == post.Id);
         }
 
-        public async Task<Author> ResolveAuthor(IResolverContext context, [Parent] Post post, [Service] BlogDbContext dbContext)
+        public async Task<Authors> ResolveAuthor(IResolverContext context, [Parent] Posts post, [Service] BlogDbContext dbContext)
         {
-            var dataLoader = context.BatchDataLoader<int, Author>(nameof(ResolveAuthor), async authorIds =>
+            var dataLoader = context.BatchDataLoader<int, Authors>(nameof(ResolveAuthor), async authorIds =>
             {
                 return await dbContext.Authors
                     .Where(a => authorIds.Contains(a.Id))
@@ -60,7 +60,7 @@ namespace DotNetConf2019.GraphQL.Schema
             return await dataLoader.LoadAsync(post.AuthorId, context.RequestAborted);
         }
 
-        public async Task<IReadOnlyList<Comment>> ResolveComments([Parent] Post post, [Service] BlogDbContext dbContext)
+        public async Task<IReadOnlyList<Comments>> ResolveComments([Parent] Posts post, [Service] BlogDbContext dbContext)
         {
             return await dbContext.Comments
                 .Where(c => c.PostId == post.Id)

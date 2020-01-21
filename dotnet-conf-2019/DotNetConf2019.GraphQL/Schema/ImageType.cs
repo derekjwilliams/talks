@@ -3,9 +3,9 @@ using HotChocolate.Types;
 
 namespace DotNetConf2019.GraphQL.Schema
 {
-    public class ImageType : ObjectType<Image>
+    public class ImageType : ObjectType<Images>
     {
-        protected override void Configure(IObjectTypeDescriptor<Image> descriptor)
+        protected override void Configure(IObjectTypeDescriptor<Images> descriptor)
         {
             base.Configure(descriptor);
 

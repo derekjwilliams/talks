@@ -26,7 +26,7 @@ namespace DotNetConf2019.GraphQL
                         .AddQueryType<QueryType>()
                         .AddMutationType<MutationType>()
                         .AddType<OffsetDateTimeType>()
-                        .AddType<Post>()
+                        .AddType<Posts>()
                         .Create());
         }
 

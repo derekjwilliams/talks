@@ -14,9 +14,9 @@ namespace DotNetConf2019.GraphQL.Schema
         //    this.clock = clock;
         //}
 
-        public async Task<Post> SubmitPost([Service] BlogDbContext dbContext, SubmitPostInput input)
+        public async Task<Posts> SubmitPost([Service] BlogDbContext dbContext, SubmitPostInput input)
         {
-            var post = new Post
+            var post = new Posts
             {
                 AuthorId = input.AuthorId,
                 Title = input.Title,

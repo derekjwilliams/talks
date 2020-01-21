@@ -1,15 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
+//using System.Collections.Generic;
 
-namespace BlogServer.Models
+namespace DotNetConf2019.GraphQL.Data
 {
-    public partial class Comments
+    public class Comments
     {
-        public int Id { get; set; }
-        public string Text { get; set; }
-        public int PostId { get; set; }
-        public byte[] SubmittedOn { get; set; }
+        public int Id { get; set; } = 0;
 
-        public virtual Posts Post { get; set; }
+        public string Text { get; set; } = null!;
+
+        public int PostId { get; set; } = 0;
+
+        public DateTime SubmittedOn { get; set; }
+
+        //public virtual Posts Post { get; set; }
     }
 }

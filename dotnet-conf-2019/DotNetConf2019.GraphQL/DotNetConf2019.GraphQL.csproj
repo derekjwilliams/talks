@@ -10,6 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Resolvers\" />
+    <Folder Include="Types\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

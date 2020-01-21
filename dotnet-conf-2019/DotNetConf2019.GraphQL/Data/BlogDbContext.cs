@@ -15,12 +15,12 @@ namespace DotNetConf2019.GraphQL.Data
             optionsBuilder.UseSqlServer(_config.GetConnectionString("IdentityConnection"));
         }
 
-        public DbSet<Post> Posts { get; set; }
+        public DbSet<Posts> Posts { get; set; }
 
-        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Comments> Comments { get; set; }
 
-        public DbSet<Author> Authors { get; set; }
+        public DbSet<Authors> Authors { get; set; }
 
-        public DbSet<Image> Images { get; set; }
+        public DbSet<Images> Images { get; set; }
     }
 }

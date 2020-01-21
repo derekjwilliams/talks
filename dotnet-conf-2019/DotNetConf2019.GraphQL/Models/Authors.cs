@@ -1,18 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
+﻿//using System;
+//using System.Collections.Generic;
 
-namespace BlogServer.Models
+namespace DotNetConf2019.GraphQL.Data
 {
-    public partial class Authors
+    //Note the commented out code was generated and not used...
+    public class Authors
     {
-        public Authors()
-        {
-            Posts = new HashSet<Posts>();
-        }
+        //public Authors()
+        //{
+        //    Posts = new HashSet<Posts>();
+        //}
 
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public int Id { get; set; } = 0;
 
-        public virtual ICollection<Posts> Posts { get; set; }
+        public string Name { get; set; }  = null!;
+
+        // public virtual ICollection<Posts> Posts { get; set; }
+
     }
 }
