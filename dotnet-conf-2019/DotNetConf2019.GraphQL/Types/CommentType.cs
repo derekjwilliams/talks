@@ -17,6 +17,9 @@ namespace DotNetConf2019.GraphQL.Schema
 
             descriptor.Field(c => c.Text)
                 .Type<NonNullType<StringType>>();
+
+            //descriptor.Field(c => c.PublishedOn)
+            //    .Type<NonNullType<DateTimeType>>();
         }
     }
 }

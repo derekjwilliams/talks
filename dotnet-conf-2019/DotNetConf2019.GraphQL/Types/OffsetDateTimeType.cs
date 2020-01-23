@@ -35,23 +35,19 @@ namespace DotNetConf2019.GraphQL.Schema
 
         public override object Serialize(object value)
         {
-            throw new NotImplementedException();
-        //    if (value == null)
-        //    {
-        //        return null;
-        //    }
+            if (value == null)
+                return null;
 
-        //    if (value is OffsetDateTime offsetDateTime)
-        //    {
-        //        return OffsetDateTimePattern.ExtendedIso.Format(offsetDateTime);
-        //    }
+            if (value is DateTime dateTime)
+                return dateTime.ToLongDateString();
 
-        //    throw new ArgumentException("The specified value cannot be serialized by the StringType.");
+            throw new ArgumentException("The specified value cannot be serialized by the StringType.");
         }
 
         public override bool TryDeserialize(object serialized, out object value)
         {
             throw new NotImplementedException();
+
             //if (serialized is null)
             //{
             //    value = null;
@@ -61,6 +57,7 @@ namespace DotNetConf2019.GraphQL.Schema
             //if (serialized is string s)
             //{
             //    value = OffsetDateTimePattern.ExtendedIso.Parse(s).Value;
+
             //    return true;
             //}
 

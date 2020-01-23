@@ -1,4 +1,5 @@
-﻿using HotChocolate.Types;
+﻿using DotNetConf2019.GraphQL.Resolvers;
+using HotChocolate.Types;
 
 namespace DotNetConf2019.GraphQL.Schema
 {

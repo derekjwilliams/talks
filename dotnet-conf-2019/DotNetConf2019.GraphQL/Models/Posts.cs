@@ -1,6 +1,4 @@
-﻿using HotChocolate.Types;
-using HotChocolate.Types.Relay;
-using System;
+﻿using System;
 
 namespace DotNetConf2019.GraphQL.Data
 {

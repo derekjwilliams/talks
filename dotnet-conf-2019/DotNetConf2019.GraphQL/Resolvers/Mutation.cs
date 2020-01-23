@@ -1,9 +1,10 @@
 ﻿using DotNetConf2019.GraphQL.Data;
+using DotNetConf2019.GraphQL.Schema;
 using HotChocolate;
 using System;
 using System.Threading.Tasks;
 
-namespace DotNetConf2019.GraphQL.Schema
+namespace DotNetConf2019.GraphQL.Resolvers
 {
     public class Mutation
     {
@@ -27,7 +28,7 @@ namespace DotNetConf2019.GraphQL.Schema
             dbContext.Posts.Add(post);
 
             await dbContext.SaveChangesAsync();
-            
+
 
             return post;
         }

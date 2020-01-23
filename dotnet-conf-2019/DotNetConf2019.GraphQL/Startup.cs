@@ -4,11 +4,9 @@ using HotChocolate;
 using HotChocolate.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using HotChocolate.AspNetCore.Voyager;
-using DotNetConf2019.GraphQL.Data;
 using System;
 
 namespace DotNetConf2019.GraphQL
@@ -26,7 +24,7 @@ namespace DotNetConf2019.GraphQL
                         .AddQueryType<QueryType>()
                         .AddMutationType<MutationType>()
                         .AddType<OffsetDateTimeType>()
-                        .AddType<Posts>()
+                        //.AddType<Posts>()  //Derek...  Posts query still works without this.  Do we still need it? 
                         .Create());
         }
 

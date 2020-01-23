@@ -1,4 +1,4 @@
-﻿using DotNetConf2019.GraphQL.Data;
+﻿using DotNetConf2019.GraphQL.Models;
 using HotChocolate.Types;
 
 namespace DotNetConf2019.GraphQL.Schema

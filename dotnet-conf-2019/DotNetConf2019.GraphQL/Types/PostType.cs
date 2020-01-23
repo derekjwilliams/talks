@@ -1,4 +1,5 @@
 ﻿using DotNetConf2019.GraphQL.Data;
+using DotNetConf2019.GraphQL.Models;
 using HotChocolate;
 using HotChocolate.Resolvers;
 using HotChocolate.Types;
@@ -64,7 +65,7 @@ namespace DotNetConf2019.GraphQL.Schema
         {
             return await dbContext.Comments
                 .Where(c => c.PostId == post.Id)
-                .OrderByDescending(c => c.SubmittedOn)
+                .OrderByDescending(c => c.PublishedOn)
                 .ToListAsync();
         }
     }

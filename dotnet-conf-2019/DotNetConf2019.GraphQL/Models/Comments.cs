@@ -11,7 +11,7 @@ namespace DotNetConf2019.GraphQL.Data
 
         public int PostId { get; set; } = 0;
 
-        public DateTime SubmittedOn { get; set; }
+        public DateTime PublishedOn { get; set; }
 
         //public virtual Posts Post { get; set; }
     }

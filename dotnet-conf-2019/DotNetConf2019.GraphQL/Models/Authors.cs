@@ -1,7 +1,7 @@
 ﻿//using System;
 //using System.Collections.Generic;
 
-namespace DotNetConf2019.GraphQL.Data
+namespace DotNetConf2019.GraphQL.Models
 {
     //Note the commented out code was generated and not used...
     public class Authors
@@ -13,7 +13,7 @@ namespace DotNetConf2019.GraphQL.Data
 
         public int Id { get; set; } = 0;
 
-        public string Name { get; set; }  = null!;
+        public string Name { get; set; } = null!;
 
         // public virtual ICollection<Posts> Posts { get; set; }
 
