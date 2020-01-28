@@ -1,14 +1,17 @@
 ﻿using NodaTime;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace DotNetConf2019.GraphQL.Data
 {
     public class Comment
     {
-        public int Id { get; set; } = 0;
+        [Key]        
+        public Guid PublicKey { get; set; } = Guid.NewGuid();
 
         public string Text { get; set; } = null!;
 
-        public int PostId { get; set; } = 0;
+        public Guid PostId { get; set; } = Guid.NewGuid();
 
         public OffsetDateTime SubmittedOn { get; set; }
     }

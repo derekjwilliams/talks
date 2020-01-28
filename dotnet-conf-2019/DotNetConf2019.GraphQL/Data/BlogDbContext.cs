@@ -23,33 +23,31 @@ namespace DotNetConf2019.GraphQL.Data
 
             Randomizer.Seed = new Random(13);
 
-            var authorIds = 1;
+            // var authorIds = 1;
             var authors = new Faker<Author>()
-                .RuleFor(a => a.Id, f => authorIds++)
+                .RuleFor(a => a.PublicKey, f => Guid.NewGuid())
                 .RuleFor(a => a.Name, f => f.Name.FullName())
                 .Generate(5);
-
-            var postIds = 1;
+            //todo the set of post uuids need to match in the associated author, image, and comment objects/tables    
             var posts = new Faker<Post>()
-                .RuleFor(p => p.Id, f => postIds++)
-                .RuleFor(p => p.AuthorId, f => f.PickRandom(authors).Id)
+                .RuleFor(p => p.PublicKey, f => Guid.NewGuid())
+                .RuleFor(p => p.AuthorId, f => f.PickRandom(authors).PublicKey)
                 .RuleFor(p => p.Title, f => f.Lorem.Sentence(5))
                 .RuleFor(p => p.Markdown, f => f.Lorem.Paragraphs(3))
                 .RuleFor(p => p.PublishedOn, f => OffsetDateTime.FromDateTimeOffset(f.Date.PastOffset()))
                 .Generate(25);
 
-            var commentIds = 1;
             var comments = new Faker<Comment>()
-                .RuleFor(c => c.Id, f => commentIds++)
-                .RuleFor(c => c.PostId, f => f.PickRandom(posts).Id)
+                .RuleFor(c => c.PublicKey, f => Guid.NewGuid())
+                .RuleFor(c => c.PostId, f => f.PickRandom(posts).PublicKey)
                 .RuleFor(c => c.SubmittedOn, f => OffsetDateTime.FromDateTimeOffset(f.Date.PastOffset()))
                 .RuleFor(c => c.Text, f => f.Lorem.Paragraphs(3))
                 .Generate(100);
 
-            var imageIds = 1;
+            // var imageIds = 1;
             var images = new Faker<Image>()
-                .RuleFor(i => i.Id, f => imageIds++)
-                .RuleFor(i => i.PostId, f => f.PickRandom(posts).Id)
+                .RuleFor(i => i.PublicKey, f => Guid.NewGuid())
+                .RuleFor(i => i.PostId, f => f.PickRandom(posts).PublicKey)
                 .RuleFor(i => i.Url, f => f.Image.PicsumUrl())
                 .RuleFor(i => i.Size, f => f.PickRandom<ImageSize>())
                 .Generate(100);

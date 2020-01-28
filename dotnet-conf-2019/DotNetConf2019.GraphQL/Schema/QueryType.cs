@@ -9,7 +9,7 @@ namespace DotNetConf2019.GraphQL.Schema
             base.Configure(descriptor);
 
             descriptor.Field(q => q.GetPost(default, default))
-               .Argument("id", a => a.Type<NonNullType<IdType>>());
+               .Argument("id", a => a.Type<NonNullType<UuidType>>());
         }
     }
 }

@@ -1,15 +1,17 @@
 ﻿using NodaTime;
+using System;
 using HotChocolate.Types;
 using HotChocolate.Types.Relay;
+using System.ComponentModel.DataAnnotations;
 
 namespace DotNetConf2019.GraphQL.Data
 {
     public class Post
     {
+        [Key]
+        public Guid PublicKey { get; set; } = Guid.NewGuid();
 
-        public int Id { get; set; } = 0;
-
-        public int AuthorId { get; set; } = 0;
+        public Guid AuthorId { get; set; } = Guid.NewGuid();
 
         public string Title { get; set; } = "";
 

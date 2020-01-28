@@ -1,8 +1,11 @@
-﻿namespace DotNetConf2019.GraphQL.Data
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+namespace DotNetConf2019.GraphQL.Data
 {
     public class Author
     {
-        public int Id { get; set; } = 0;
+        [Key]
+        public Guid PublicKey { get; set; } = Guid.NewGuid();
 
         public string Name { get; set; }  = null!;
     }

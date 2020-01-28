@@ -9,8 +9,8 @@ namespace DotNetConf2019.GraphQL.Schema
         {
             base.Configure(descriptor);
 
-            descriptor.Field(i => i.Id)
-               .Type<NonNullType<IdType>>();
+            descriptor.Field(i => i.PublicKey)
+               .Type<NonNullType<UuidType>>();
 
             descriptor.Field(i => i.PostId)
                 .Ignore();

@@ -9,7 +9,7 @@ namespace DotNetConf2019.GraphQL.Schema
             base.Configure(descriptor);
 
             descriptor.Field(i => i.AuthorId)
-                .Type<NonNullType<IdType>>();
+                .Type<NonNullType<UuidType>>();
 
             descriptor.Field(i => i.Title)
                 .Type<NonNullType<StringType>>();
