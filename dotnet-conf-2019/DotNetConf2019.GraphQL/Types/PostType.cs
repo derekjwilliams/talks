@@ -32,7 +32,7 @@ namespace DotNetConf2019.GraphQL.Schema
 
             descriptor.Field<PostType>(p => ResolveAuthor(default, default, default))
                 .Name("author")
-                .Type<AuthorType>(nullable: false);
+                .Type<AuthorType>();
 
             descriptor.Field<PostType>(p => ResolveComments(default, default))
                 .Name("comments")

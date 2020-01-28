@@ -15,6 +15,9 @@ namespace DotNetConf2019.GraphQL.Schema
                 .OrderByDescending(p => p.PublishedOn)
                 .ToListAsync();
 
+        public Task<Posts> GetPost([Service] BlogDbContext dbContext, int id) =>
+            dbContext.Posts.FindAsync(id).AsTask();
+
         public async Task<IReadOnlyList<Authors>> GetAuthors([Service] BlogDbContext dbContext) => 
             await dbContext.Authors.ToListAsync();
 
@@ -24,7 +27,6 @@ namespace DotNetConf2019.GraphQL.Schema
         public async Task<IReadOnlyList<Images>> GetImages([Service] BlogDbContext dbContext) =>
             await dbContext.Images.ToListAsync();
 
-        public Task<Posts> GetPost([Service] BlogDbContext dbContext, int id) =>
-            dbContext.Posts.FindAsync(id).AsTask();
+
     }
 }
