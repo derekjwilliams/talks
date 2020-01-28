@@ -22,6 +22,7 @@ namespace FoundObjx.Blog.Data
                 .ForNpgsqlUseIdentityColumns();
 
             Randomizer.Seed = new Random(13);
+
             var authors = new Faker<Author>()
                 .RuleFor(a => a.PublicKey, f => Guid.NewGuid())
                 .RuleFor(a => a.Name, f => f.Name.FullName())
