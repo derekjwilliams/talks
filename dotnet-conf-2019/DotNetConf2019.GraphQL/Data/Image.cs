@@ -5,7 +5,7 @@ namespace DotNetConf2019.GraphQL.Data
     public class Image
     {
         [Key]
-        public Guid PublicKey { get; set; }
+        public Guid PublicKey { get; set; } = Guid.NewGuid();
 
         public ImageSize Size { get; set; } = ImageSize.Small;
 

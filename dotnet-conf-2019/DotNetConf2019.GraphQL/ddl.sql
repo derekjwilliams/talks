@@ -9,13 +9,14 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
-
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA public;
 
 COMMENT ON EXTENSION "uuid-ossp" IS 'generate universally unique identifiers (UUIDs)';
 
+
 SET default_tablespace = '';
 SET default_with_oids = false;
+
 
 CREATE TABLE public."Authors" (
     "PublicKey" uuid DEFAULT public.uuid_generate_v4() NOT NULL,
@@ -44,7 +45,6 @@ CREATE TABLE public."Posts" (
     "AuthorId" uuid NOT NULL
 );
 
-
 ALTER TABLE ONLY public."Authors"
     ADD CONSTRAINT "PK_Authors" PRIMARY KEY ("PublicKey");
 
@@ -57,4 +57,11 @@ ALTER TABLE ONLY public."Images"
 ALTER TABLE ONLY public."Posts"
     ADD CONSTRAINT "PK_Posts" PRIMARY KEY ("PublicKey");
 
+ALTER TABLE ONLY public."Comments"
+    ADD CONSTRAINT comments_fk FOREIGN KEY ("PostId") REFERENCES public."Posts"("PublicKey");
 
+ALTER TABLE ONLY public."Images"
+    ADD CONSTRAINT images_fk FOREIGN KEY ("PostId") REFERENCES public."Posts"("PublicKey");
+
+ALTER TABLE ONLY public."Posts"
+    ADD CONSTRAINT posts_fk FOREIGN KEY ("AuthorId") REFERENCES public."Authors"("PublicKey");

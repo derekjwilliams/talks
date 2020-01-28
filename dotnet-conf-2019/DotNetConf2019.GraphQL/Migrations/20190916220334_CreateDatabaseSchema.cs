@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using NodaTime;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
+using System;
 
 namespace DotNetConf2019.GraphQL.Migrations
 {
@@ -12,64 +13,64 @@ namespace DotNetConf2019.GraphQL.Migrations
                 name: "Authors",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    PublicKey = table.Column<Guid>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Authors", x => x.Id);
+                    table.PrimaryKey("PK_Authors", x => x.PublicKey);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Comments",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    PublicKey = table.Column<Guid>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Text = table.Column<string>(nullable: true),
-                    PostId = table.Column<int>(nullable: false),
+                    PostId = table.Column<Guid>(nullable: false),
                     SubmittedOn = table.Column<OffsetDateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Comments", x => x.Id);
+                    table.PrimaryKey("PK_Comments", x => x.PublicKey);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Images",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    PublicKey = table.Column<Guid>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Size = table.Column<int>(nullable: false),
                     Url = table.Column<string>(nullable: true),
-                    PostId = table.Column<int>(nullable: false)
+                    PostId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Images", x => x.Id);
+                    table.PrimaryKey("PK_Images", x => x.PublicKey);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Posts",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    PublicKey = table.Column<Guid>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    AuthorId = table.Column<int>(nullable: false),
+                    AuthorId = table.Column<Guid>(nullable: false),
                     Title = table.Column<string>(nullable: true),
                     Markdown = table.Column<string>(nullable: true),
                     PublishedOn = table.Column<OffsetDateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Posts", x => x.Id);
+                    table.PrimaryKey("PK_Posts", x => x.PublicKey);
                 });
 
             migrationBuilder.InsertData(
                 table: "Authors",
-                columns: new[] { "Id", "Name" },
+                columns: new[] { "PublicKey", "Name" },
                 values: new object[,]
                 {
                     { 1, "Joseph Murray" },
@@ -81,7 +82,7 @@ namespace DotNetConf2019.GraphQL.Migrations
 
             migrationBuilder.InsertData(
                 table: "Comments",
-                columns: new[] { "Id", "PostId", "SubmittedOn", "Text" },
+                columns: new[] { "PublicKey", "PostId", "SubmittedOn", "Text" },
                 values: new object[,]
                 {
                     { 74, 18, new NodaTime.OffsetDateTime(new NodaTime.LocalDateTime(2019, 1, 28, 10, 34, 57).PlusNanoseconds(241262100L), NodaTime.Offset.FromHours(12)), @"In et expedita in. Distinctio neque ea exercitationem consequatur aliquam maiores laudantium voluptatem. Repudiandae voluptates illum sint vel aliquid labore quo voluptas fuga.
@@ -588,7 +589,7 @@ namespace DotNetConf2019.GraphQL.Migrations
 
             migrationBuilder.InsertData(
                 table: "Images",
-                columns: new[] { "Id", "PostId", "Size", "Url" },
+                columns: new[] { "PublicKey", "PostId", "Size", "Url" },
                 values: new object[,]
                 {
                     { 66, 16, 1, "https://picsum.photos/640/480/?image=74" },
@@ -695,7 +696,7 @@ namespace DotNetConf2019.GraphQL.Migrations
 
             migrationBuilder.InsertData(
                 table: "Posts",
-                columns: new[] { "Id", "AuthorId", "Markdown", "PublishedOn", "Title" },
+                columns: new[] { "PublicKey", "AuthorId", "Markdown", "PublishedOn", "Title" },
                 values: new object[,]
                 {
                     { 14, 4, @"Sapiente et sed. Occaecati ipsam deserunt est illo temporibus. Quae dolore dolorem placeat aut veniam.
