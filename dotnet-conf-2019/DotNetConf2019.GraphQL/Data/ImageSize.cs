@@ -1,4 +1,4 @@
-﻿namespace DotNetConf2019.GraphQL.Data
+﻿namespace FoundObjx.Blog.Data
 {
     public enum ImageSize
     {

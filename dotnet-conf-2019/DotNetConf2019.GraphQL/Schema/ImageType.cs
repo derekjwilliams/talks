@@ -1,7 +1,7 @@
-﻿using DotNetConf2019.GraphQL.Data;
+﻿using FoundObjx.Blog.Data;
 using HotChocolate.Types;
 
-namespace DotNetConf2019.GraphQL.Schema
+namespace FoundObjx.Blog.Schema
 {
     public class ImageType : ObjectType<Image>
     {

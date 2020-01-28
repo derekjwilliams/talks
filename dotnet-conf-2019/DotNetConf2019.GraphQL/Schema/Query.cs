@@ -1,4 +1,4 @@
-﻿using DotNetConf2019.GraphQL.Data;
+﻿using FoundObjx.Blog.Data;
 using HotChocolate;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DotNetConf2019.GraphQL.Schema
+namespace FoundObjx.Blog.Schema
 {
     public class Query
     {

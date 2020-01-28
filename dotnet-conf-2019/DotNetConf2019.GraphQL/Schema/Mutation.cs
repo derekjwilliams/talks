@@ -1,10 +1,10 @@
-﻿using DotNetConf2019.GraphQL.Data;
+﻿using FoundObjx.Blog.Data;
 using HotChocolate;
 using NodaTime;
 using System;
 using System.Threading.Tasks;
 
-namespace DotNetConf2019.GraphQL.Schema
+namespace FoundObjx.Blog.Schema
 {
     public class Mutation
     {

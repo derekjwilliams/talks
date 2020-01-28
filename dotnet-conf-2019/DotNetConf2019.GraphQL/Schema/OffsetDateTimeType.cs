@@ -4,7 +4,7 @@ using NodaTime;
 using NodaTime.Text;
 using System;
 
-namespace DotNetConf2019.GraphQL.Schema
+namespace FoundObjx.Blog.Schema
 {
     public class OffsetDateTimeType : ScalarType
     {

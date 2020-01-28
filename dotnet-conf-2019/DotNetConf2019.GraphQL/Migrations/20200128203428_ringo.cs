@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using NodaTime;
 
-namespace DotNetConf2019.GraphQL.Migrations
+namespace FoundObjx.Blog.Migrations
 {
     public partial class ringo : Migration
     {

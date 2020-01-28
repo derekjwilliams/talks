@@ -1,5 +1,5 @@
-﻿using DotNetConf2019.GraphQL.Data;
-using DotNetConf2019.GraphQL.Schema;
+﻿using FoundObjx.Blog.Data;
+using FoundObjx.Blog.Schema;
 using HotChocolate;
 using HotChocolate.AspNetCore;
 using Microsoft.AspNetCore.Builder;
@@ -9,10 +9,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using HotChocolate.AspNetCore.Voyager;
-using DotNetConf2019.GraphQL.Data;
 using System;
 
-namespace DotNetConf2019.GraphQL
+namespace FoundObjx.Blog
 {
     public class Startup
     {

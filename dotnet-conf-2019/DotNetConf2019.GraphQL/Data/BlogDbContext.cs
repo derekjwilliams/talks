@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using NodaTime;
 using System;
 
-namespace DotNetConf2019.GraphQL.Data
+namespace FoundObjx.Blog.Data
 {
     public class BlogDbContext : DbContext
     {

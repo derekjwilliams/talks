@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-namespace DotNetConf2019.GraphQL
+namespace FoundObjx.Blog
 {
     public class Program
     {

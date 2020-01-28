@@ -1,6 +1,6 @@
 ﻿using HotChocolate.Types;
 
-namespace DotNetConf2019.GraphQL.Schema
+namespace FoundObjx.Blog.Schema
 {
     public class SubmitPostInputType : InputObjectType<SubmitPostInput>
     {

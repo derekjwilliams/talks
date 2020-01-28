@@ -4,7 +4,7 @@ using HotChocolate.Types;
 using HotChocolate.Types.Relay;
 using System.ComponentModel.DataAnnotations;
 
-namespace DotNetConf2019.GraphQL.Data
+namespace FoundObjx.Blog.Data
 {
     public class Post
     {
