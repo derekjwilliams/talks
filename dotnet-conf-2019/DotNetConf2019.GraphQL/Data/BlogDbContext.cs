@@ -22,13 +22,11 @@ namespace FoundObjx.Blog.Data
                 .ForNpgsqlUseIdentityColumns();
 
             Randomizer.Seed = new Random(13);
-
-            // var authorIds = 1;
             var authors = new Faker<Author>()
                 .RuleFor(a => a.PublicKey, f => Guid.NewGuid())
                 .RuleFor(a => a.Name, f => f.Name.FullName())
                 .Generate(5);
-            //todo the set of post uuids need to match in the associated author, image, and comment objects/tables    
+
             var posts = new Faker<Post>()
                 .RuleFor(p => p.PublicKey, f => Guid.NewGuid())
                 .RuleFor(p => p.AuthorId, f => f.PickRandom(authors).PublicKey)
@@ -44,7 +42,6 @@ namespace FoundObjx.Blog.Data
                 .RuleFor(c => c.Text, f => f.Lorem.Paragraphs(3))
                 .Generate(100);
 
-            // var imageIds = 1;
             var images = new Faker<Image>()
                 .RuleFor(i => i.PublicKey, f => Guid.NewGuid())
                 .RuleFor(i => i.PostId, f => f.PickRandom(posts).PublicKey)
