@@ -21,8 +21,8 @@ namespace FoundObjx.Blog.Schema
         public async Task<IReadOnlyList<Image>> GetImages([Service] BlogDbContext dbContext) =>
             await dbContext.Images.ToListAsync();
 
-        public Task<Post> GetPost([Service] BlogDbContext dbContext, Guid PublicKey) {
-            return dbContext.Posts.FindAsync(PublicKey);
+        public Task<Post> GetPost([Service] BlogDbContext dbContext, Guid publicKey) {
+            return dbContext.Posts.FindAsync(publicKey);
         }
     }
 }

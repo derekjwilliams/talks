@@ -18,7 +18,7 @@ namespace FoundObjx.Blog.Data
 
         public ImageSize Size { get; set; } = ImageSize.Small;
 
-        public string Url { get; set; } = "https://picsum.photos/640/480/?image=692";
+        public string Url { get; set; } = "";
 
         public Guid PostId { get; set; } = Guid.NewGuid();
     }
@@ -32,7 +32,7 @@ namespace FoundObjx.Blog.Data
     public class Post
     {
         [Key]
-        public Guid PublicKey { get; set; } = Guid.NewGuid();
+        public Guid PublicKey { get; set; }
 
         public Guid AuthorId { get; set; } = Guid.NewGuid();
 

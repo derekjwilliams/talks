@@ -8,8 +8,11 @@ namespace FoundObjx.Blog.Schema
         {
             base.Configure(descriptor);
 
+            descriptor.Field(q => q.GetPosts(default))
+                .Type<NonNullType<ListType<NonNullType<PostType>>>>();
+
             descriptor.Field(q => q.GetPost(default, default))
-               .Argument("PublicKey", a => a.Type<NonNullType<UuidType>>());
+               .Argument("publicKey", a => a.Type<NonNullType<UuidType>>());
         }
     }
 }
