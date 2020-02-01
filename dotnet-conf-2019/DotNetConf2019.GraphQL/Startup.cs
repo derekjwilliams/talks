@@ -15,13 +15,18 @@ namespace FoundObjx.Blog
 {
     public class Startup
     {
+        readonly string origins = "origins"; // for Cross Request Scripting (CORS), see https://docs.microsoft.com/en-us/aspnet/core/security/cors?view=aspnetcore-3.1
         public void ConfigureServices(IServiceCollection services)
         {
+          services.AddCors(options => {
+            options.AddPolicy(origins,
+              b => {
+                  b.WithOrigins("http://localhost:3000") // change to approriate client url, or use "*" to leave wide open
+                   .AllowAnyHeader() // required for POST
+                   .AllowAnyMethod(); // required to allow for any header on preflight
+              });
+          });
 
-            services.AddCors(c =>  {  
-              c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());  
-            });
-            
             services.AddSingleton<IClock>(SystemClock.Instance);
 
             services
@@ -32,28 +37,27 @@ namespace FoundObjx.Blog
                 .AddDataLoaderRegistry()
                 .AddGraphQL(sp =>
                      SchemaBuilder.New()
-                        .AddServices(sp)
-                        .AddQueryType<QueryType>()
-                        .AddMutationType<MutationType>()
-                        .AddType<OffsetDateTimeType>()
-                        .AddType<Post>()
-                        .Create());
+                                  .AddServices(sp)
+                                  .AddQueryType<QueryType>()
+                                  .AddMutationType<MutationType>()
+                                  .AddType<OffsetDateTimeType>()
+                                  .AddType<Post>()
+                                  .Create());
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseCors(options => options.AllowAnyOrigin());  
             if (env.IsDevelopment())
             {
                 MigrateDatabase(app.ApplicationServices);
                 app.UseDeveloperExceptionPage();
             }
 
-            app
-                .UseGraphQLHttpPost(new HttpPostMiddlewareOptions { Path = "/graphql" })
-                .UseGraphQLHttpGetSchema(new HttpGetSchemaMiddlewareOptions { Path = "/graphql/schema" })
-				.UsePlayground("/graphql")
-				.UseVoyager("/graphql");
+            app.UseCors(origins) // user cors as configured in ConfigureService
+               .UseGraphQLHttpPost(new HttpPostMiddlewareOptions { Path = "/graphql" })
+               .UseGraphQLHttpGetSchema(new HttpGetSchemaMiddlewareOptions { Path = "/graphql/schema" })
+				       .UsePlayground("/graphql")
+				       .UseVoyager("/graphql");
         }
 
         private void MigrateDatabase(IServiceProvider services)
