@@ -1,4 +1,5 @@
 ﻿using HotChocolate.Types;
+using System;
 
 namespace FoundObjx.Blog.Schema
 {

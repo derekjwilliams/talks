@@ -17,6 +17,11 @@ namespace FoundObjx.Blog
     {
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddCors(c =>  {  
+              c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());  
+            });
+            
             services.AddSingleton<IClock>(SystemClock.Instance);
 
             services
@@ -37,6 +42,7 @@ namespace FoundObjx.Blog
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors(options => options.AllowAnyOrigin());  
             if (env.IsDevelopment())
             {
                 MigrateDatabase(app.ApplicationServices);
